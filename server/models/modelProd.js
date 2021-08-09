@@ -11,6 +11,9 @@ const ProductSchema = new mongoose.Schema({
         min: [3, 'This is not an acceptable price. Really {VALUE}!!!. Please increase it'],
         max: [999, "We don't trade luxary items"],
     },
+    pic: {
+        type: String,
+    },
     description: {
         type: String,
         unique: [true, "You can't be serious, give a real description man"],

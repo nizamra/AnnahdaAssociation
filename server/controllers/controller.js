@@ -1,4 +1,4 @@
-const { Person } = require('./models/model');
+const { Person } = require('../models/model');
 module.exports.index = (request, response) => {
     response.json({
         message: "Hello World"

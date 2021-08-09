@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
+// import { FormData } from "form-data"
+// import FileBase64 from 'react-file-base64';
 
 const ProductForm = (props) => {
     const { initialTitle, allErrors, initialPrice, initialDescription, onSubmitProp } = props;
     const [title, setTitle] = useState(initialTitle);
     const [price, setPrice] = useState(initialPrice);
+    const [pic, setPic] = useState([]);
     const [description, setDescription] = useState(initialDescription);
+    const datForm = new FormData();
 
     const onSubmitHandler = e => {
         e.preventDefault();
+        datForm.append("title", title);
+        datForm.append("price", price);
+        datForm.append("pic", pic);
+        datForm.append("description", description);
+        console.log(datForm);
         onSubmitProp(
-            { title, price, description }
+            datForm
         );
+        console.log("in form data to send");
+        console.log(datForm);
         setTitle("");
         setPrice("");
         setDescription("");
@@ -19,7 +30,7 @@ const ProductForm = (props) => {
     return (
         <>
             <h2>Product Manager</h2>
-            <form onSubmit={onSubmitHandler}>
+            <form onSubmit={onSubmitHandler} encType='multipart/form-data'>
                 <p>
                     <label>Title</label><br />
                     <input
@@ -39,6 +50,16 @@ const ProductForm = (props) => {
                     {allErrors.price ?
                         <p style={{ color: 'red' }}>{allErrors.price.message}</p> : ''
                     }
+                </p>
+                <p>
+                    <label>Picture </label>
+                    <input
+                        type="file"
+                        filename="pic"
+                        onChange={(e) => setPic(e.target.files[0])} />
+                    {/* <FileBase64
+                        multiple={false}
+                        onDone={({base64})=>setPic(base64)} /> */}
                 </p>
                 <p>
                     <label>Descriptione</label><br />

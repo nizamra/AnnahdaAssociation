@@ -1,5 +1,5 @@
-import React from 'react';
-import io from 'socket.io-client';
+import React from 'react'
+import io from 'socket.io-client'
   
   const Chat = props => {
       const [rmis, setRmis] = React.useState("");

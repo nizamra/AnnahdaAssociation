@@ -1,4 +1,4 @@
-const { Author } = require('./models/modelingAuthors');
+const { Author } = require('../models/modelingAuthors');
 
 module.exports.createAuthor = (request, response) => {
     const { name } = request.body;

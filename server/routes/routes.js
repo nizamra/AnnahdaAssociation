@@ -1,10 +1,11 @@
-const PersonController = require('./controllers/controller');
-const ProductController = require('./controllers/controlProd');
-const AuthCont = require('./controllers/controlingAuthors');
+const PersonController = require('../controllers/controller');
+const ProductController = require('../controllers/controlProd');
+const { upload } = require('../controllers/controlProd');
+const AuthCont = require('../controllers/controlingAuthors');
 module.exports = function(app){
     app.get('/api', PersonController.index);
     app.post('/api/people', PersonController.createPerson);
-    app.post('/api/product', ProductController.createProduct);
+    app.post('/api/product', upload.single("pic"), ProductController.createProduct);
     app.get('/api/product', ProductController.getAllProducts);
     app.get('/api/product/:id', ProductController.getProduct);
     app.put('/api/product/:id', ProductController.updateProduct);

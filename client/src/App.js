@@ -15,7 +15,7 @@ import UpdateAuthor from './authorFolder/Update'
 import LalaChat from './chatfolder/LalaChat'
 
 function App() {
-  const [name] = useState("asd")
+  const [name] = React.useState("AbdullahQasem")
 
   return (
     <div className="App">
@@ -32,7 +32,7 @@ function App() {
         <LalaChat path="/lala" name={name} />
       </Router>
 
-      <h3>End Main XxX</h3>
+      <h3>XxX End Main XxX</h3>
       <Origin />
     </div>
   );
