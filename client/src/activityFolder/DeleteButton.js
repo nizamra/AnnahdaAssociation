@@ -5,17 +5,17 @@ import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 
 
 const DeleteButton = props => {
-    const { authorId, successCallback } = props;
+    const { activityId, successCallback } = props;
 
-    const deleteAuthor = e => {
-        axios.delete('http://localhost:8000/api/author/' + authorId)
+    const deleteActivity = e => {
+        axios.delete('http://localhost:8000/api/activity/' + activityId)
             .then(res => {
                 successCallback();
             })
     }
 
     return (
-        <Button id="bu" onClick={deleteAuthor} endIcon={<DeleteForeverOutlinedIcon/>} variant="contained" color="secondary"  />
+        <Button id="bu" onClick={deleteActivity} endIcon={<DeleteForeverOutlinedIcon/>} variant="contained" color="secondary"  />
     )
 }
 export default DeleteButton
