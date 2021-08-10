@@ -14,7 +14,6 @@ const upload = multer({ storage: storage });
 exports.upload = upload;
 
 module.exports.createProduct = (request, response) => {
-    console.log(request.file.originalname);
     const pic = request.file.originalname;
     const { title, price, description } = request.body;
     Product.create({
