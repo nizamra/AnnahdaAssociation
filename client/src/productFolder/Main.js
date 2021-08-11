@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import Reg from '../personFolder/Register';
 import Papa from '../personFolder/PersonForm';
 import Mama from './ProductForm';
 import AllProds from '../views/ProductsList';
+// import Authinticator from '../context/AuthContext';
+
 
 const Main = () => {
     const [products, setProducts] = useState([]);
@@ -55,6 +58,7 @@ const Main = () => {
 
     return (
         <div>
+            <Reg />
             <Papa />
             <Mama onSubmitProp={createProduct} allErrors={errors} initialTitle="" initialPrice="" initialDescription="" />
             <hr />

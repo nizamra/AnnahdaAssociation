@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-// import { FormData } from "form-data"
-// import FileBase64 from 'react-file-base64';
+import FormControl from '@material-ui/core/FormControl'
+import { FormHelperText, InputLabel, Input, Button, TextField } from '@material-ui/core'
+
 
 const ProductForm = (props) => {
     const { initialTitle, allErrors, initialPrice, initialDescription, onSubmitProp } = props;
@@ -31,47 +32,53 @@ const ProductForm = (props) => {
         <>
             <h2>Product Manager</h2>
             <form onSubmit={onSubmitHandler} encType='multipart/form-data'>
-                <p>
-                    <label>Title</label><br />
-                    <input
+                <FormControl>
+                    <InputLabel htmlFor="title">Title</InputLabel>
+                    <Input
+                        id="title"
+                        aria-describedby="titleErr"
                         type="text"
                         onChange={(e) => setTitle(e.target.value)}
                         value={title} />
                     {allErrors.title ?
-                        <p style={{ color: 'red' }}>{allErrors.title.message}</p> : ''
-                    }
-                </p>
-                <p>
-                    <label>Price</label><br />
-                    <input
+                        <FormHelperText style={{ color: 'red' }} id="titleErr">{allErrors.title.message}</FormHelperText> : ''}
+                </FormControl><br />
+                <FormControl>
+                    <InputLabel htmlFor="price">Price</InputLabel>
+                    <Input
+                        id="price"
+                        aria-describedby="priceErr"
                         type="text"
                         onChange={(e) => setPrice(e.target.value)}
                         value={price} />
                     {allErrors.price ?
-                        <p style={{ color: 'red' }}>{allErrors.price.message}</p> : ''
-                    }
-                </p>
-                <p>
-                    <label>Picture </label>
-                    <input
-                        type="file"
+                        <FormHelperText style={{ color: 'red' }} id="priceErr">{allErrors.price.message}</FormHelperText> : ''}
+                </FormControl><br />
+                <FormControl>
+                    <InputLabel htmlFor="Picture">Picture</InputLabel>
+                    <Input
+                        id="Picture"
+                        aria-describedby="pictureErr"
                         filename="pic"
+                        type="file"
                         onChange={(e) => setPic(e.target.files[0])} />
-                    {/* <FileBase64
-                        multiple={false}
-                        onDone={({base64})=>setPic(base64)} /> */}
-                </p>
-                <p>
-                    <label>Descriptione</label><br />
-                    <input
+                    {allErrors.picture ?
+                        <FormHelperText style={{ color: 'red' }} id="pictureErr">{allErrors.picture.message}</FormHelperText> : ''}
+                </FormControl><br />
+                <FormControl>
+                    {/* <InputLabel htmlFor="outlined-secondary">Description</InputLabel> */}
+                    <TextField
+                        id="outlined-secondary"
+                        label="description"
+                        variant="outlined"
+                        // color="secondary"
+                        aria-describedby="descriptionErr"
                         type="text"
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description} />
+                        onChange={(e) => setDescription(e.target.value)} />
                     {allErrors.description ?
-                        <p style={{ color: 'red' }}>{allErrors.description.message}</p> : ''
-                    }
-                </p>
-                <input type="submit" />
+                        <FormHelperText style={{ color: 'red' }} id="descriptionErr">{allErrors.description.message}</FormHelperText> : ''}
+                </FormControl><br />
+                <Button type="submit" variant="contained" color="primary"> Add/updata </Button>
             </form>
         </>
     )

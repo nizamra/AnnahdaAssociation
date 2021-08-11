@@ -14,7 +14,6 @@ const upload = multer({ storage: storage });
 exports.upload = upload;
 
 module.exports.createProduct = (request, response) => {
-    console.log(request.file.originalname);
     const pic = request.file.originalname;
     const { title, price, description } = request.body;
     Product.create({
@@ -24,11 +23,7 @@ module.exports.createProduct = (request, response) => {
         description
     })
         .then(product => response.json(product))
-        .catch(err => {
-            console.log(err);
-            response.status(400).json(err);
-
-        });
+        .catch(err => response.status(400).json(err));
 }
 
 module.exports.getAllProducts = (request, response) => {

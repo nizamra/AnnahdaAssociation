@@ -1,36 +1,51 @@
-import React, { useState } from 'react'
-import axios from 'axios';
-const PersonForm = () => {
-    const [firstName, setFirstName] = useState(""); 
-    const [lastName, setLastName] = useState("");
+import React, { useState, useContext } from 'react'
+import {navigate} from '@reach/router'
+import AuthService from '../services/Authservice';
+import Message from './Message';
+import AuthContext from '../context/AuthContext'
+
+const PersonForm = props => {
+    const authContext = useContext(AuthContext);
+    const [person, setPerson] = useState({ username: "", password: "" });
+    const [message, setMessage] = useState(null);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
     const onSubmitHandler = e => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/people', {
-            firstName,
-            lastName
+        setPerson({ username: username, passwd: password });
+        AuthService.login({ username: username, passwd: password }).then(data => {
+            const { isAuthenticated, message } = data;
+            if (isAuthenticated) {
+                authContext.setPerson(person);
+                authContext.setIsAuthenticates(isAuthenticated);
+                navigate('/');
+            }
+            else
+                setMessage(message)
         })
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
-        setFirstName("");
-        setLastName("");
+            .catch(err => console.log(err))
+        setUsername("");
+        setPassword("");
     }
     return (
         <form onSubmit={onSubmitHandler}>
+            {message ? <Message message={message} /> : null}
             <p>
-                <label>First Name</label><br/>
-                <input 
-                type="text" 
-                onChange={(e)=>setFirstName(e.target.value)}
-                 value={firstName}/>
+                <label>User Name</label><br />
+                <input
+                    type="text"
+                    onChange={(e) => setUsername(e.target.value)}
+                    value={username} />
             </p>
             <p>
-                <label>Last Name</label><br/>
-                <input 
-                type="text" 
-                onChange={(e)=>setLastName(e.target.value)} 
-                value={lastName}/>
+                <label>Password</label><br />
+                <input
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password} />
             </p>
-            <input type="submit"/>
+            <input type="submit" />
         </form>
     )
 }

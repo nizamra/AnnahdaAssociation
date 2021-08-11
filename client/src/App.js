@@ -4,6 +4,8 @@ import { Router } from '@reach/router'
 import Chat from './chatfolder/Chat'
 import Origin from './Original'
 
+import Logg from './personFolder/LogReg'
+
 import Main from './productFolder/Main'
 import Detail from './productFolder/Detail'
 import Update from './productFolder/Update'
@@ -20,6 +22,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Logg path="/login" />
         <Main path="/" />
         <Detail path="product/:id" />
         <Update path="product/:id/edit" />
@@ -32,7 +35,7 @@ function App() {
         <LalaChat path="/lala" name={name} />
       </Router>
 
-      <h3>XxX End Main XxX</h3>
+      <h3>XxX انتهى البيان XxX</h3>
       <Origin />
     </div>
   );
