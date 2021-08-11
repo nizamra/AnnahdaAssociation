@@ -1,42 +1,42 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { navigate, Link } from '@reach/router';
-import AuthorForm from './AuthorForm';
+import ActivityForm from './ActivityForm';
 import DeleteButton from './DeleteButton';
 
 const Update = props => {
     const { id } = props;
-    const [author, setAuthor] = useState();
+    const [activity, setActivity] = useState();
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/author/' + id)
+        axios.get('http://localhost:8000/api/activity/' + id)
             .then(res => {
                 console.log("useEffect inside Update.js");
-                setAuthor(res.data);
+                setActivity(res.data);
                 setLoaded(true);
             })
     }, [id])
 
-    const updateAuthor = (layth) => {
-        axios.put('http://localhost:8000/api/author/' + id, layth)
+    const updateActivity = (layth) => {
+        axios.put('http://localhost:8000/api/activity/' + id, layth)
             .then(res => console.log(res));
-        navigate('/author/' + id);
+        navigate('/activity/' + id);
     }
 
     return (
         <div>
-            <Link to={'/author/' + id}>
+            <Link to={'/activity/' + id}>
                 Cancel
             </Link>
-            <h1>Update this Author</h1>
+            <h1>Update this Activity</h1>
             {loaded && (
                 <>
-                    <AuthorForm
-                        onSubmitProp={updateAuthor}
-                        initialName={author.name}
+                    <ActivityForm
+                        onSubmitProp={updateActivity}
+                        initialPost={activity.post}
                     />
-                    <DeleteButton authorId={author._id} successCallback={() => navigate("/author")} />
+                    <DeleteButton activityId={activity._id} successCallback={() => navigate("/activity")} />
                 </>
             )}
         </div>

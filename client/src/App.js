@@ -10,9 +10,9 @@ import Main from './productFolder/Main'
 import Detail from './productFolder/Detail'
 import Update from './productFolder/Update'
 
-import MainAuthor from './authorFolder/Main'
-import DetailAuthor from './authorFolder/Detail'
-import UpdateAuthor from './authorFolder/Update'
+import MainActivity from './activityFolder/Main'
+import DetailActivity from './activityFolder/Detail'
+import UpdateActivity from './activityFolder/Update'
 
 import LalaChat from './chatfolder/LalaChat'
 
@@ -27,9 +27,9 @@ function App() {
         <Detail path="product/:id" />
         <Update path="product/:id/edit" />
 
-        <MainAuthor path="/author" />
-        <DetailAuthor path="author/:id" />
-        <UpdateAuthor path="author/:id/edit" />
+        <MainActivity path="/activity" />
+        <DetailActivity path="activity/:id" />
+        <UpdateActivity path="activity/:id/edit" />
 
         <Chat path="/chat" />
         <LalaChat path="/lala" name={name} />
