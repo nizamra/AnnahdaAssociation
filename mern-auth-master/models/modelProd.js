@@ -25,7 +25,6 @@ const ProductSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        unique: [true, "You can't be serious, give a real description man"],
         maxlength: [26, "Description has a limit of 26 characters"]
     }
 }, { timestamps: true });
