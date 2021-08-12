@@ -14,7 +14,8 @@ const upload2 = multer({ storage: storage });
 exports.upload2 = upload2;
 
 module.exports.createActivity = (request, response) => {
-    const { post, pic } = request.body;
+    const pic = request.file.originalname;
+    const { post } = request.body;
     Activity.create({
         post,
         pic,
