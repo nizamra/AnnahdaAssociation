@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Papa from '../personFolder/PersonForm';
 import Mama from './ProductForm';
-import AllProds from '../views/ProductsList';
+import AllProds from './ProductsList';
 
 const Main = () => {
     const [products, setProducts] = useState([]);
