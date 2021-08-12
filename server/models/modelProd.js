@@ -5,6 +5,10 @@ const ProductSchema = new mongoose.Schema({
         required: [true, "Title is required"],
         minlength: [4, "Title must be at least 4 characters long"]
       },
+    code: {
+        type: String,
+        required: [true, "Code is required"],
+      },
     price: {
         type: Number,
         required: [true, 'You Should give an estimation at least?'],
@@ -13,6 +17,11 @@ const ProductSchema = new mongoose.Schema({
     },
     pic: {
         type: String,
+    },
+    status: {
+        type: String,
+        enum: ['available', 'outOfStock', 'onDemand'],
+        required: true
     },
     description: {
         type: String,

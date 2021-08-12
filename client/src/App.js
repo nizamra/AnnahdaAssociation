@@ -32,7 +32,6 @@ function App() {
     <div className="App">
       <Header />
       <Router>
-
         <About path="/about" />
         <Product path="/product" />
         <Activity path="/activity" />
@@ -40,7 +39,7 @@ function App() {
         <AdminProduct path="/admin/product" />
         <AdminActivity path="/admin/activity" />
         <AdminManagment path="/admin/management" />
-        </Router>
+      </Router>
 
         <Footer />
 
