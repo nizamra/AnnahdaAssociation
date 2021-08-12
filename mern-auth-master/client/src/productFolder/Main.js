@@ -41,8 +41,6 @@ const Main = () => {
     }
 
     const createProduct = product => {
-        console.log("product");
-        console.log(product);
         axios.post('http://localhost:5000/api/product', 
             product
             )
@@ -58,7 +56,7 @@ const Main = () => {
 
     return (
         <div>
-            <Mama onSubmitProp={createProduct} allErrors={errors} initialTitle="" initialPrice="" initialDescription="" />
+            <Mama onSubmitProp={createProduct} allErrors={errors} initialTitle="" initialCode="" initialStatus="" initialPrice="" initialDescription="" />
             <hr />
             {loaded && <AllProds products={products} setProducts={setProducts} removeFromDom={removeFromDom} />}
         </div>

@@ -34,7 +34,7 @@ const ProductsList = (props) => {
 
     return (
         <div>
-            <h3>entering the List of All</h3>
+            <h3>entering the List of All Products</h3>
             {products.map((product, idx) => {
                 const dateOfItem = moment(product.createdAt).format('L')
                 return <Card className={classes.root} variant="outlined" key={idx}>

@@ -3,23 +3,28 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, '../client/public/pictures');
+        callback(null, './client/public/pictures');
     },
     filename: (req, file, callback) => {
+        // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        // callback(null, file.fieldname + '-' + uniqueSuffix)
         callback(null, file.originalname)
     }
 })
 
 const upload = multer({ storage: storage });
+// const upload = multer({ dest: '../client/public/pictures' })
 exports.upload = upload;
 
 module.exports.createProduct = (request, response) => {
     const pic = request.file.originalname;
-    const { title, price, description } = request.body;
+    const { title, code, price, status, description } = request.body;
     Product.create({
         title,
+        code,
         price,
         pic,
+        status,
         description
     })
         .then(product => response.json(product))

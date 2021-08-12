@@ -1,31 +1,47 @@
 import React, { useState } from 'react'
 import FormControl from '@material-ui/core/FormControl'
 import { FormHelperText, InputLabel, Input, Button, TextField } from '@material-ui/core'
-
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
+}));
 
 const ProductForm = (props) => {
-    const { initialTitle, allErrors, initialPrice, initialDescription, onSubmitProp } = props;
+    const classes = useStyles();
+    const { initialTitle, initialCode, initialStatus, allErrors, initialPrice, initialDescription, onSubmitProp } = props;
     const [title, setTitle] = useState(initialTitle);
+    const [code, setCode] = useState(initialCode);
+    const [status, setStatus] = useState(initialStatus);
     const [price, setPrice] = useState(initialPrice);
     const [pic, setPic] = useState([]);
     const [description, setDescription] = useState(initialDescription);
     const datForm = new FormData();
 
+
     const onSubmitHandler = e => {
         e.preventDefault();
         datForm.append("title", title);
+        datForm.append("code", code);
         datForm.append("price", price);
         datForm.append("pic", pic);
+        datForm.append("status", status);
         datForm.append("description", description);
-        console.log(datForm);
         onSubmitProp(
             datForm
         );
-        console.log("in form data to send");
-        console.log(datForm);
         setTitle("");
+        setCode("");
         setPrice("");
-        setDescription("");
+        setPic([""]);
+        setStatus("");
     }
 
     return (
@@ -42,6 +58,17 @@ const ProductForm = (props) => {
                         value={title} />
                     {allErrors.title ?
                         <FormHelperText style={{ color: 'red' }} id="titleErr">{allErrors.title.message}</FormHelperText> : ''}
+                </FormControl><br />
+                <FormControl>
+                    <InputLabel htmlFor="code">Code</InputLabel>
+                    <Input
+                        id="code"
+                        aria-describedby="codeErr"
+                        type="text"
+                        onChange={(e) => setCode(e.target.value)}
+                        value={code} />
+                    {allErrors.code ?
+                        <FormHelperText style={{ color: 'red' }} id="codeErr">{allErrors.code.message}</FormHelperText> : ''}
                 </FormControl><br />
                 <FormControl>
                     <InputLabel htmlFor="price">Price</InputLabel>
@@ -64,6 +91,21 @@ const ProductForm = (props) => {
                         onChange={(e) => setPic(e.target.files[0])} />
                     {allErrors.picture ?
                         <FormHelperText style={{ color: 'red' }} id="pictureErr">{allErrors.picture.message}</FormHelperText> : ''}
+                </FormControl><br />
+                <FormControl required className={classes.formControl}>
+                    <InputLabel id="status">Status</InputLabel>
+                    <Select
+                        labelId="status"
+                        id="status"
+                        value={status}
+                        onChange={(e) => setStatus(e.target.value)}
+                    >
+                        <MenuItem value="available">available</MenuItem>
+                        <MenuItem value="outOfStock">outOfStock</MenuItem>
+                        <MenuItem value="onDemand">onDemand</MenuItem>
+                    </Select>
+                    {allErrors.status ?
+                        <FormHelperText style={{ color: 'red' }} id="statusErr">{allErrors.status.message}</FormHelperText> : 'Required'}
                 </FormControl><br />
                 <FormControl>
                     {/* <InputLabel htmlFor="outlined-secondary">Description</InputLabel> */}
