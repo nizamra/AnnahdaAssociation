@@ -1,42 +1,60 @@
 import './App.css'
 import React from 'react'
 import { Router } from '@reach/router'
-import Chat from './chatfolder/Chat'
-import Origin from './Original'
+// import Chat from './chatfolder/Chat'
+// import Origin from './Original'
 
-import Logg from './personFolder/LogReg'
+// import Main from './productFolder/Main'
+// import Detail from './productFolder/Detail'
+// import Update from './productFolder/Update'
 
-import Main from './productFolder/Main'
-import Detail from './productFolder/Detail'
-import Update from './productFolder/Update'
+// import MainActivity from './activityFolder/Main'
+// import DetailActivity from './activityFolder/Detail'
+// import UpdateActivity from './activityFolder/Update'
 
-import MainActivity from './activityFolder/Main'
-import DetailActivity from './activityFolder/Detail'
-import UpdateActivity from './activityFolder/Update'
+// import LalaChat from './chatfolder/LalaChat'
 
-import LalaChat from './chatfolder/LalaChat'
-
+import Main from './views/Main'
+import About from './views/About'
+import Product from './views/Product'
+import Activity from './views/Activity'
+import AdminSign from './views/AdminSign'
+import AdminProduct from './views/AdminProduct'
+import AdminActivity from './views/AdminActivity'
+import AdminManagment from './views/AdminManagment'
+import Header from './components/Header'
+import Footer from './components/Footer'
 function App() {
-  const [name] = React.useState("AbdullahQasem")
+  const [name] = React.useState("")
+  
 
   return (
     <div className="App">
+      <Header />
       <Router>
-        <Logg path="/login" />
-        <Main path="/" />
-        <Detail path="product/:id" />
+        <About path="/about" />
+        <Product path="/product" />
+        <Activity path="/activity" />
+        <AdminSign path="/admin" />
+        <AdminProduct path="/admin/product" />
+        <AdminActivity path="/admin/activity" />
+        <AdminManagment path="/admin/management" />
+      </Router>
+
+        <Footer />
+
+        {/* <Detail path="product/:id" />
         <Update path="product/:id/edit" />
 
         <MainActivity path="/activity" />
         <DetailActivity path="activity/:id" />
-        <UpdateActivity path="activity/:id/edit" />
+        <UpdateActivity path="activity/:id/edit" /> */}
 
-        <Chat path="/chat" />
-        <LalaChat path="/lala" name={name} />
-      </Router>
-
-      <h3>XxX انتهى البيان XxX</h3>
-      <Origin />
+        {/* <Chat path="/chat" />
+        <LalaChat path="/lala" name={name} /> */}
+{/* 
+      <h3>XxX End Main XxX</h3>
+      <Origin /> */}
     </div>
   );
 }
