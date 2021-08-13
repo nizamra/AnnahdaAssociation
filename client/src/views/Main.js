@@ -1,70 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import Reg from '../personFolder/Register';
-import Papa from '../personFolder/PersonForm';
-import Mama from '../productFolder/ProductForm';
-import AllProds from '../productFolder/ProductsList';
-// import Authinticator from '../context/AuthContext';
-
+import React from 'react';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+import one from  "../1.jpg"
+import two from  "../2.jpg"
+import three from  "../3.jpg"
+import four from  "../4.jpg"
+const slideImages = [
+    one,
+    two,
+    three,
+    four,
+];
 
 const Main = () => {
-    const [products, setProducts] = useState([]);
-    const [loaded, setLoaded] = useState(false);
-    const [errors, setErrors] = useState({ title: "", price: "", description: "" });
-    // code from Lana
-    // useEffect(() => {
-    //     axios.get("http://localhost:8000/api/belt")
-    //         .then(res => {
-    //             setToDoTasks(res.data.filter((eachTask) => {
-    //                 return eachTask.status === "toDo"
-    //             }))
-
-    //             setDoingTasks(res.data.filter((eachTask) => {
-    //                 return eachTask.status === "doning"
-    //             }))
-
-    //             setDoneTasks(res.data.filter((eachTask) => {
-    //                 return eachTask.status === "done"
-    //             }))
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [someThingChanged])
-
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/product')
-            .then(res => {
-                setProducts(res.data);
-                setLoaded(true);
-            });
-    }, [])
-
-    const removeFromDom = productId => {
-        setProducts(products.filter(product => product._id !== productId));
-    }
-
-    const createProduct = product => {
-        console.log("product");
-        console.log(product);
-        axios.post('http://localhost:8000/api/product', product)
-            .then(res => {
-                setProducts([...products, res.data]);
-                setErrors({ title: "", price: "", description: "" });
-            })
-            .catch(err => {
-                console.log(err);
-                setErrors(err.response.data.errors);
-            })
-    }
-
     return (
-        <div>
-            <Reg />
-            <Papa />
-            <Mama onSubmitProp={createProduct} allErrors={errors} initialTitle="" initialPrice="" initialDescription="" />
-            <hr />
-            {loaded && <AllProds products={products} setProducts={setProducts} removeFromDom={removeFromDom} />}
+            <div className="slide-container" style={{ 'overflow': 'hidden', padding: "100px" }}>
+            <Slide>
+                <div className="each-slide">
+                    <div style={{ 'backgroundImage': `url(${slideImages[0]})`, 'height': '750px', backgroundSize: "cover" }}>
+                    </div>
+                </div>
+                <div className="each-slide">
+                    <div style={{ 'backgroundImage': `url(${slideImages[1]})`, 'height': '750px', backgroundSize: "cover" }}>
+                    </div>
+                </div>
+                <div className="each-slide">
+                    <div style={{ 'backgroundImage': `url(${slideImages[2]})`, 'height': '750px', backgroundSize: "cover" }}>
+                    </div>
+                </div>
+                <div className="each-slide">
+                    <div style={{ 'backgroundImage': `url(${slideImages[3]})`, 'height': '750px', backgroundSize: "cover" }}>
+                    </div>
+                </div>
+
+            </Slide>
         </div>
     )
 }
-
 export default Main;

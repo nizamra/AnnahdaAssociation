@@ -7,29 +7,36 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import moment from 'moment'
+import './activity.css'
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
   },
 });
 
-export default function Activity() {
+export default function Activity(props) {
   const classes = useStyles();
+  const dateOfItem = moment(props.activity.createdAt).format('L')
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
+    <Card className={classes.root} style={{margin:'auto' , marginBottom:'40px'}} className='makeStylesroot'>
+      <CardActionArea >
+
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.activity.pic}
           title="Contemplative Reptile"
         />
+                <Typography variant="body2" color="textSecondary" component="p">
+          تاريخ الإضافة: {dateOfItem}
+        </Typography>
+
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-                                        عملنا واحد اثنين ثلاث
+            {props.activity.post}
           </Typography>
         </CardContent>
       </CardActionArea>

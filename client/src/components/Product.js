@@ -14,35 +14,34 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Product() {
+export default function Product(props) {
   const classes = useStyles();
-
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{margin:'20px'}}>
       <CardActionArea>
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.product.pic}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            طاولة <span style={{fontSize:'20px'}}>R61</span>
+            {props.product.title} <span style={{fontSize:'20px'}}>{props.product.code}</span>
           </Typography>
           
           <Typography gutterBottom variant="h6" component="h5">
-          99.99
+          {props.product.price}
           <span>NIS</span> 
  
           </Typography>
 
           <Typography variant="body2" color="textSecondary" component="p">
-                                        منتج خشبي صناعة يدوية 
+                                        {props.product.description}
           </Typography>
           <Typography gutterBottom variant="h6" component="h5">
-            الحالة
+          {props.product.status}
           </Typography>
         </CardContent>
       </CardActionArea>
