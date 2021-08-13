@@ -14,16 +14,15 @@ import { Router } from '@reach/router'
 
 // import LalaChat from './chatfolder/LalaChat'
 
-import Main from './views/Main'
 import About from './views/About'
-import Product from './views/Product'
-import Activity from './views/Activity'
 import AdminSign from './views/AdminSign'
 import AdminProduct from './views/AdminProduct'
 import AdminActivity from './views/AdminActivity'
 import AdminManagment from './views/AdminManagment'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ProductsList from './views/ProductsList'
+import ActivitysList from './views/ActivitysList'
 function App() {
   const [name] = React.useState("")
   
@@ -33,8 +32,8 @@ function App() {
       <Header />
       <Router>
         <About path="/about" />
-        <Product path="/product" />
-        <Activity path="/activity" />
+        <ProductsList path="/product" />
+        <ActivitysList path="/activity" />
         <AdminSign path="/admin" />
         <AdminProduct path="/admin/product" />
         <AdminActivity path="/admin/activity" />
