@@ -7,7 +7,8 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/headfot/Header";
+import Footer from "./components/headfot/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
@@ -15,8 +16,9 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Main from './productFolder/Main';
 import MainAct from './activityFolder/Main';
-import Prods from './AdminPages/Products';
-import News from './AdminPages/News';
+import MainAdmin from './AdminPages/Main';
+import News from './activityFolder/ActivitysList';
+import Orders from './AdminPages/Orders';
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -45,16 +47,18 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/admin" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/main" component={Main} />
+            <Route exact path="/news" component={News} />
             <Switch>
               <PrivateRoute exact path="/act" component={MainAct} />
-              <PrivateRoute exact path="/prods" component={Prods} />
-              <PrivateRoute exact path="/news" component={News} />
+              <PrivateRoute exact path="/prods" component={MainAdmin} />
+              <PrivateRoute exact path="/orders" component={Orders} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
+            <Footer />
           </div>
         </Router>
       </Provider>

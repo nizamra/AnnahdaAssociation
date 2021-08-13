@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import AllProds from '../views/ProductsList';
+import ProductForm from '../productFolder/ProductForm';
+import EnhancedTable from './Products';
+// import AllProds from '../views/ProductsList';
+// import Authinticator from '../context/AuthContext';
 
 
 const Main = () => {
     const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [errors, setErrors] = useState({ title: "", price: "", description: "" });
     // code from Lana
     // useEffect(() => {
     //     axios.get("http://localhost:8000/api/belt")
@@ -38,9 +42,25 @@ const Main = () => {
         setProducts(products.filter(product => product._id !== productId));
     }
 
+    const createProduct = product => {
+        axios.post('http://localhost:5000/api/product', 
+            product
+            )
+            .then(res => {
+                setProducts([...products, res.data]);
+                setErrors({ title: "", price: "", description: "" });
+            })
+            .catch(err => {
+                console.log(err);
+                setErrors(err.response.data.errors);
+            })
+    }
+
     return (
         <div>
-            {loaded && <AllProds products={products} setProducts={setProducts} removeFromDom={removeFromDom} />}
+            <ProductForm onSubmitProp={createProduct} allErrors={errors} initialTitle="" initialCode="" initialStatus="" initialPrice="" initialDescription="" />
+            <hr />
+            {loaded && <EnhancedTable />}
         </div>
     )
 }

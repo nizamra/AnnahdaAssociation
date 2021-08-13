@@ -24,10 +24,10 @@ const ActivityForm = (props) => {
 
     return (
         <>
-            <h2>Activity Manager</h2>
+            <h2>إضافة الأخبار</h2>
             <form onSubmit={onSubmitHandler} encType='multipart/form-data'>
             <FormControl>
-                    <InputLabel htmlFor="title">Title</InputLabel>
+                    <InputLabel htmlFor="title">العنوان الرئيسي</InputLabel>
                     <Input
                         id="title"
                         aria-describedby="titleErr"
@@ -38,7 +38,7 @@ const ActivityForm = (props) => {
                         <FormHelperText style={{ color: 'red' }} id="titleErr">{allErrors.title.message}</FormHelperText> : ''}
                 </FormControl><br />
                 <FormControl>
-                    <InputLabel htmlFor="post">Post</InputLabel>
+                    <InputLabel htmlFor="post">المضمون</InputLabel>
                     <Input
                         id="post"
                         aria-describedby="postErr"
@@ -49,7 +49,7 @@ const ActivityForm = (props) => {
                         <FormHelperText style={{ color: 'red' }} id="postErr">{allErrors.post.message}</FormHelperText> : ''}
                 </FormControl><br />
                 <FormControl>
-                    <InputLabel htmlFor="Picture">Picture</InputLabel>
+                    <InputLabel htmlFor="Picture">صورة</InputLabel>
                     <Input
                         id="Picture"
                         aria-describedby="pictureErr"
@@ -59,7 +59,7 @@ const ActivityForm = (props) => {
                     {allErrors.picture ?
                         <FormHelperText style={{ color: 'red' }} id="pictureErr">{allErrors.picture.message}</FormHelperText> : ''}
                 </FormControl><br />
-                <Button type="submit" variant="contained" color="primary"> Add/updata </Button>
+                <Button type="submit" variant="contained" color="primary"> إضافة </Button>
             </form>
         </>
     )

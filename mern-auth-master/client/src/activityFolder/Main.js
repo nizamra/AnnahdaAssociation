@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import FormingAnActivity from './ActivityForm';
-import ActivitysList from './ActivitysList';
+import EnhancedTable from '../AdminPages/News';
+
+// import ActivitysList from './ActivitysList';
 
 const MainAct = () => {
     const [activitys, setActivitys] = useState([]);
@@ -35,7 +37,7 @@ const MainAct = () => {
         <div>
             <FormingAnActivity onSubmitProp={createActivity} allErrors={errors} initialTitle="" initialPost="" />
             <hr />
-            {loaded && <ActivitysList activitys={activitys} setActivitys={setActivitys} removeFromDom={removeFromDom} />}
+            {loaded && <EnhancedTable />}
         </div>
     )
 }

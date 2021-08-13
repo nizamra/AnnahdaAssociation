@@ -3,6 +3,7 @@ const express = require("express");
 const passport = require("passport");
 
 const users = require("./routes/api/users");
+// const prods = require("./routes/api/routes");
 
 const cors = require("cors");
 const app = express();
@@ -21,7 +22,7 @@ require('./config/config');
 // Passport middleware
 app.use(passport.initialize());
 
-// Passport config
+// // Passport config
 require("./config/passport")(passport);
 
 // Routes
@@ -29,6 +30,7 @@ app.use("/api/users", users);
 // app.use("/api/routes", prods);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// require("./routes/api/users");
 require("./routes/api/routes")(app);
 const port = process.env.PORT || 5000;
 

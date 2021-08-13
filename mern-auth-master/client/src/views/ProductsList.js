@@ -9,10 +9,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import ShareIcon from '@material-ui/icons/Share';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import BuyButton from '../productFolder/BuyButton'
 
 const useStyles = makeStyles({
     root: {
@@ -59,18 +58,7 @@ const ProductsList = (props) => {
                         </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <DeleteButton productId={product._id} successCallback={() => removeFromDom(product._id)} />
-                        <Link to={"/product/" + product._id + "/edit"}>
-                            <IconButton aria-label="editing">
-                                <CreateOutlinedIcon />
-                            </IconButton>
-                        </Link>
-                        <IconButton aria-label="add to favorites">
-                            <FavoriteIcon />
-                        </IconButton>
-                        <IconButton aria-label="share">
-                            <ShareIcon />
-                        </IconButton>
+                        <BuyButton productCode={product.code} />
                     </CardActions>
                 </Card>
             })}

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -20,32 +21,37 @@ const useStyles = makeStyles({
 
 const ActivitysList = (props) => {
     const classes = useStyles();
-    const { activitys } = props;
-
+    const [activitys, setActivitys] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/activity')
+            .then(res => {
+                setActivitys(res.data);
+            });
+    }, [])
     return (
         <div>
-            <h3>All News</h3>
+            <h3>جميع الأخبار</h3>
             {activitys.map((activity, idx) => {
                 const dateOfItem = moment(activity.createdAt).format('L')
                 return <Card className={classes.root} variant="outlined" key={idx}>
-                        <CardActionArea>
-                            <CardMedia
-                                className={classes.media}
-                                image={"/pictures/" + activity.pic}
-                                title={activity.pic}
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {activity.title}
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {activity.post}
-                                    <br />
-                                    تاريخ الإضافة: {dateOfItem}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+                    <CardActionArea>
+                        <CardMedia
+                            className={classes.media}
+                            image={"/pictures/" + activity.pic}
+                            title={activity.pic}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {activity.title}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {activity.post}
+                                <br />
+                                تاريخ الإضافة: {dateOfItem}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
             })}
         </div>
     )

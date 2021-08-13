@@ -49,9 +49,12 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'createdAt', numeric: false, disablePadding: true, label: 'تاريخ الخبر' },
-  { id: 'post', numeric: false, disablePadding: true, label: 'تفاصيل الخبر' },
-  { id: 'title', numeric: false, disablePadding: true, label: 'العنوان العام' },
+  { id: 'status', numeric: false, disablePadding: true, label: 'حالة الطلب' },
+  { id: 'productCode', numeric: false, disablePadding: true, label: 'كود المنتج' },
+  { id: 'amount', numeric: false, disablePadding: true, label: 'الكمية' },
+  { id: 'mobile', numeric: false, disablePadding: true, label: 'الهاتف' },
+  { id: 'address', numeric: false, disablePadding: true, label: 'العنوان' },
+  { id: 'name', numeric: false, disablePadding: true, label: 'الاسم' },
 ];
 
 function EnhancedTableHead(props) {
@@ -74,7 +77,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align='center'
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -143,7 +146,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Activities List
+          Products List
         </Typography>
       )}
 
@@ -200,12 +203,12 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [activity, setActivity] = React.useState([]);
+  const [orders, setOrders] = React.useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/activity')
+    axios.get('http://localhost:5000/api/order')
         .then(res => {
-            setActivity(res.data);
+            setOrders(res.data);
         });
 }, [])
 
@@ -217,7 +220,7 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = activity.map((n) => n.title);
+      const newSelecteds = orders.map((n) => n.title);
       setSelected(newSelecteds);
       return;
     }
@@ -259,7 +262,7 @@ export default function EnhancedTable() {
 
   const isSelected = (title) => selected.indexOf(title) !== -1;
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, activity.length - page * rowsPerPage);
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, orders.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
@@ -279,10 +282,10 @@ export default function EnhancedTable() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={activity.length}
+              rowCount={orders.length}
             />
             <TableBody>
-              {stableSort(activity, getComparator(order, orderBy))
+              {stableSort(orders, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.title);
@@ -304,10 +307,13 @@ export default function EnhancedTable() {
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell>
-                      <TableCell align="left">{row.createdAt}</TableCell>
-                      <TableCell align="left">{row.post}</TableCell>
+                      <TableCell align="center">{row.status}</TableCell>
+                      <TableCell align="center">{row.productCode}</TableCell>
+                      <TableCell align="center">{row.amount}</TableCell>
+                      <TableCell align="center">{row.mobile}</TableCell>
+                      <TableCell align="center">{row.address}</TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.title}
+                        {row.name}
                       </TableCell>
                     </TableRow>
                   );
@@ -323,7 +329,7 @@ export default function EnhancedTable() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={activity.length}
+          count={orders.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

@@ -37,6 +37,12 @@ module.exports.getAllProducts = (request, response) => {
         .catch(err => response.json(err))
 }
 
+module.exports.getAllAvailable = (request, response) => {
+    Task.find({status:'available'})
+        .then(tasks => response.json(tasks))
+        .catch(err => response.status(400).json(err))
+}
+
 module.exports.getProduct = (request, response) => {
     Product.findOne({ _id: request.params.id })
         .then(product => response.json(product))
