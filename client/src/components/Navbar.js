@@ -64,9 +64,9 @@ export default function Navbar() {
             <AppBar  position="static" title={<img src={logo} alt="شعار" />}>
                 <Toolbar className='MuiAppBarcolorPrimary'>
                     <Link to="/">
-                    <img src={logo} alt="شعار" style={{width:'50px', paddingLeft: '10px'}} />
+                    <img src={logo} alt="شعار" style={{width: '87px', padding: '10px 10px 0px'}} />
                     </Link>
-                    <Typography className={classes.title} variant="h6" noWrap>
+                    <Typography className={classes.title} variant="h5" noWrap>
                         جمعية النهضة النسائية
                     </Typography>
                     <div className={classes.search}>

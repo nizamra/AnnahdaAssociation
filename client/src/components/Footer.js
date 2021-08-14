@@ -15,21 +15,21 @@ const Footer = () => {
                     <p className="footer-links">
 
                         <Link to="/" >
-                            <Tab label="الصفحة الرئيسية" />
+                            <Tab label="الصفحة الرئيسية" style= {{fontSize:'20px'}}/>
                         </Link>
                         <Link to="/about" >
-                            <Tab label="عن الجمعية" />
+                            <Tab label="عن الجمعية" style= {{fontSize:'20px'}}/>
                         </Link>
                         <Link to="/product" >
-                            <Tab label="المنتجات" />
+                            <Tab label="المنتجات" style= {{fontSize:'20px'}}/>
                         </Link>
                         <Link to="/activity" >
-                            <Tab label="النشاطات" />
+                            <Tab label="النشاطات" style= {{fontSize:'20px'}}/>
                         </Link>
                     </p>
                 </div>
 
-                <div className="footer-center" style= {{textAlign :'center'}}>
+                <div className="footer-center" style= {{textAlign :'center', marginTop: '20px'}}>
 
                     <div>
                         <i className="fa fa-map-marker"></i>
@@ -61,7 +61,7 @@ const Footer = () => {
                     <Link to="/">
                         <img src={logo} alt="شعار" style={{ width: '50px' }} />
                     </Link>
-                    <p className="footer-company-name"> جمعية النهضة النسائية © 2021</p>
+                    <p className="footer-company-name" style= {{fontSize:'18px'}}> جمعية النهضة النسائية © 2021</p>
 
                     </footer>
 

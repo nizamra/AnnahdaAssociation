@@ -23,14 +23,17 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ProductsList from './views/ProductsList'
 import ActivitysList from './views/ActivitysList'
+import Main from './views/Main'
 function App() {
   const [name] = React.useState("")
-  
+
 
   return (
     <div className="App">
       <Header />
       <Router>
+        <Main path="/" />
+
         <About path="/about" />
         <ProductsList path="/product" />
         <ActivitysList path="/activity" />
@@ -40,18 +43,18 @@ function App() {
         <AdminManagment path="/admin/management" />
       </Router>
 
-        <Footer />
+      <Footer />
 
-        {/* <Detail path="product/:id" />
+      {/* <Detail path="product/:id" />
         <Update path="product/:id/edit" />
 
         <MainActivity path="/activity" />
         <DetailActivity path="activity/:id" />
         <UpdateActivity path="activity/:id/edit" /> */}
 
-        {/* <Chat path="/chat" />
+      {/* <Chat path="/chat" />
         <LalaChat path="/lala" name={name} /> */}
-{/* 
+      {/* 
       <h3>XxX End Main XxX</h3>
       <Origin /> */}
     </div>
