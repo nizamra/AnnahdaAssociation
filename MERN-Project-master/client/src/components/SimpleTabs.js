@@ -4,11 +4,17 @@ import AuthService from '../Services/AuthService';
 import { AuthContext } from '../Context/AuthContext';
 import {Link, navigate} from '@reach/router'
 import './Tabs.css'
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+
 const SimpleTabs = () => {
   const style = {
-    background: '#eba943',
+    background: '#d54037',
+    paddingBottom: '10px'
   }
+  const style2 = {
+    marginRight: '20px' ,
+  }
+
 
   const { setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
@@ -25,31 +31,32 @@ const SimpleTabs = () => {
       {
         isAuthenticated ?
           <>
-            <Link to="/adminmain" >
+            <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/adminmain')}}>
               <Tab label="المنتجات" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
-            </Link>
-            <Link to="/adminnews" >
-              <Tab label="الأخبار" style={{ color: 'black', fontSize: '20px' }} />
-            </Link>
-            <Link to="/adminorders" >
-              <Tab label="الطلبات" style={{ color: 'black', fontSize: '20px' }} />
-            </Link>
+              </Button>
+              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/adminnews')}}>
+              <Tab label="الأخبار" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
+              </Button>
+              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/adminorders')}}>
+              <Tab label="الطلبات" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
+              </Button>
+
             <Button onClick={logout} color="inherit">تسجيل الخروج</Button>
           </>
           :
           <>
-            <Link to="/" >
+              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/')}}>
               <Tab label="الصفحة الرئيسية" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
-            </Link>
-            <Link to="/about" >
-              <Tab label="عن الجمعية" style={{ color: 'black', fontSize: '20px' }} />
-            </Link>
-            <Link to="/product" >
-              <Tab label="المنتجات" style={{ color: 'black', fontSize: '20px' }} />
-            </Link>
-            <Link to="/activity" >
-              <Tab label="الأخبار" style={{ color: 'black', fontSize: '20px' }} />
-            </Link>
+              </Button>
+              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/about')}}>
+              <Tab label="عن الجمعية" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
+              </Button>
+              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/product')}}>
+              <Tab label="المنتجات" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
+              </Button>
+              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/activity')}}>
+              <Tab label="الأخبار" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
+              </Button>
           </>
       }
     </div>

@@ -20,7 +20,7 @@ export default function Activity(props) {
   const dateOfItem = moment(props.activity.createdAt).format('L')
 
   return (
-    <Card className={classes.root} style={{margin:'auto' , marginBottom:'40px'}} className='makeStylesroot'>
+    <Card className={classes.root} style={{ margin: 'auto', marginBottom: '40px' }} className='makeStylesroot'>
       <CardActionArea >
 
         <CardMedia
@@ -30,15 +30,15 @@ export default function Activity(props) {
           image={props.activity.pic}
           title="Contemplative Reptile"
         />
-                <Typography variant="body2" color="textSecondary" component="p">
-          تاريخ الإضافة: {dateOfItem}
-        </Typography>
 
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {props.activity.post}
           </Typography>
         </CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+          تاريخ الإضافة: {dateOfItem}
+        </Typography>
       </CardActionArea>
     </Card>
   );

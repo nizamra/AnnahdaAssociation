@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-
 export default function Navbar() {
     const classes = useStyles();
 
@@ -64,9 +63,9 @@ export default function Navbar() {
             <AppBar  position="static" title={<img src={logo} alt="شعار" />}>
                 <Toolbar className='MuiAppBarcolorPrimary'>
                     <Link to="/">
-                    <img src={logo} alt="شعار" style={{width: '87px', padding: '10px 10px 0px'}} />
+                    <img src={logo} alt="شعار" style={{width: '120px', padding: '10px 10px 0px'}} />
                     </Link>
-                    <Typography className={classes.title} variant="h5" noWrap>
+                    <Typography className={classes.title} variant="h4" style ={{color: 'black'}} noWrap >
                         جمعية النهضة النسائية
                     </Typography>
                 </Toolbar>

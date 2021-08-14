@@ -14,7 +14,7 @@ const slideImages = [
 
 const Main = () => {
     return (
-            <div className="slide-container" style={{ 'overflow': 'hidden', padding: "100px" }}>
+            <div className="slide-container" style={{ 'overflow': 'hidden', padding: "50px" }}>
             <Slide>
                 <div className="each-slide">
                     <div style={{ 'backgroundImage': `url(${slideImages[0]})`, 'height': '750px', backgroundSize: "cover" }}>

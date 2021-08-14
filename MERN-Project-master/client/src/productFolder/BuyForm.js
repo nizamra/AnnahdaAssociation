@@ -20,10 +20,10 @@ const BuyForm = (props) => {
     }
 
     return (
-        <>
-            <h2>Product Manager</h2>
+        <div style={{padding:'30px'}}>
+            <h2>استبيان عملية الشراء</h2>
             <form onSubmit={onSubmitHandler} encType='multipart/form-data'>
-                <FormControl>
+                <FormControl >
                     <InputLabel htmlFor="name">الاسم كاملاً</InputLabel>
                     <Input
                         id="name"
@@ -66,10 +66,10 @@ const BuyForm = (props) => {
                         value={address} />
                     {allErrors.address ?
                         <FormHelperText style={{ color: 'red' }} id="addressErr">{allErrors.address.message}</FormHelperText> : ''}
-                </FormControl><br />
-                <Button type="submit" variant="contained" color="primary">اشتري</Button>
+                </FormControl><br></br> <br></br>
+                <Button type="submit" variant="contained" color="primary" >اشتري</Button>
             </form>
-        </>
+        </div>
     )
 }
 
