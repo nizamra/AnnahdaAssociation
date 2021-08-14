@@ -14,7 +14,7 @@ import { Router } from '@reach/router'
 
 // import LalaChat from './chatfolder/LalaChat'
 
-import About from './views/About'
+import Aboutus from './langs/About us'
 import AdminSign from './views/AdminSign'
 import AdminProduct from './views/AdminProduct'
 import AdminActivity from './views/AdminActivity'
@@ -33,7 +33,6 @@ function App() {
       <Header />
       <Router>
         <Main path="/" />
-
         <About path="/about" />
         <ProductsList path="/product" />
         <ActivitysList path="/activity" />
