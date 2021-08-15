@@ -5,17 +5,17 @@ import { ListItem } from '@material-ui/core';
 const Products = (props) => {
     return (
         <div>
-                                <ListItem>
+        <div style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap'}}>
 
             {props.products.map((product, idx) => {
                 return (
-                    <div key={idx}>
+                    <div key={idx} style={{width: '30%', margin:'20px 0'}}>
                         <Product product={product} />
                     </div>
 
                 )
             })}
-                                </ListItem>
+        </div>
 
         </div>
     )

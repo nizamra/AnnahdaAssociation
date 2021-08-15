@@ -18,13 +18,9 @@ import Products from '../components/Products';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 320,
-        height: 330,
-        display: 'inline-block',
+        padding: '20px 0'
     },
-    media: {
-        height: 140,
-    },
+
 });
 
 const ProductsList = () => {
@@ -41,8 +37,7 @@ const ProductsList = () => {
     }, [])
 
     return (
-        <div>
-            
+        <div >
             {loaded && <Products products={products}/>}
         </div>
     )

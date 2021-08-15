@@ -1,19 +1,6 @@
-import { Link } from '@reach/router';
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import DeleteButton from '../activityFolder/DeleteButton';
-import { Button, Paper, Card, CardContent } from '@material-ui/core';
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import { makeStyles } from '@material-ui/core/styles';
-import CardActions from '@material-ui/core/CardActions';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import ShareIcon from '@material-ui/icons/Share';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import moment from 'moment'
-import Activity from '../components/Activity';
 import Activitys from '../components/Activitys';
 
 const useStyles = makeStyles({
@@ -40,7 +27,7 @@ const ActivitysList = () => {
     }, [])
 
     return (
-        <div>
+        <div style={{padding:'20px 0'}}>
             {loaded && <Activitys activitys={activitys}/> }
         </div>
     )

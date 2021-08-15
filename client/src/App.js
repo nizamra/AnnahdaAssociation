@@ -24,6 +24,7 @@ import Footer from './components/Footer'
 import ProductsList from './views/ProductsList'
 import ActivitysList from './views/ActivitysList'
 import Main from './views/Main'
+import About from './views/About'
 function App() {
   const [name] = React.useState("")
 

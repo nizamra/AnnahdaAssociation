@@ -43,7 +43,6 @@ const BuyButton = (props) => {
                 شراء
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">شراء جديد</DialogTitle>
                 <BuyForm productCode={productCode} allErrors={errors} orderProduct={createNew} />
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
