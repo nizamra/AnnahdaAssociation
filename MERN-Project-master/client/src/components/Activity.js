@@ -11,7 +11,7 @@ import moment from 'moment'
 import './activity.css'
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 250,
   },
 });
 
@@ -26,13 +26,14 @@ export default function Activity(props) {
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
-          height="140"
+          height="250"
+          width='100%'
           image={props.activity.pic}
           title="Contemplative Reptile"
         />
 
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="h3" component="h4" color="textSecondary">
             {props.activity.post}
           </Typography>
         </CardContent>

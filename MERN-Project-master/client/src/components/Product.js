@@ -32,13 +32,14 @@ export default function Product(props) {
           className={classes.media}
         />
         <CardContent >
+        <Typography gutterBottom variant="h5" component="h2">
+            {props.product.title} <span style={{ fontSize: '15px' }}>{props.product.code}</span>
+          </Typography>
+
           <Typography gutterBottom variant="h5" component="h5">
             {props.product.price}
             <span>NIS</span>
 
-          </Typography>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.product.title} <span style={{ fontSize: '15px' }}>{props.product.code}</span>
           </Typography>
 
           <Typography variant="body2" color="textSecondary" component="p">

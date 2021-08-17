@@ -23,7 +23,7 @@ const Footer = () => {
                         <Link to="/product" >
                             <Tab label="المنتجات" style= {{fontSize:'20px'}}/>
                         </Link>
-                        <Link to="/activity" >
+                        <Link to="/news" >
                             <Tab label="الأخبار" style= {{fontSize:'20px'}}/>
                         </Link>
                     </p>

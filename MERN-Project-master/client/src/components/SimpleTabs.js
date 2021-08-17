@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Tab from '@material-ui/core/Tab';
 import AuthService from '../Services/AuthService';
 import { AuthContext } from '../Context/AuthContext';
-import {Link, navigate} from '@reach/router'
+import { navigate } from '@reach/router'
 import './Tabs.css'
 import Button from '@material-ui/core/Button';
 
@@ -40,8 +40,9 @@ const SimpleTabs = () => {
               <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/adminorders')}}>
               <Tab label="الطلبات" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
               </Button>
-
-            <Button onClick={logout} color="inherit">تسجيل الخروج</Button>
+              <Button variant="contained" color="default" style={style2} onClick={logout}>
+              <Tab label="تسجيل الخروج" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
+              </Button>
           </>
           :
           <>
@@ -54,7 +55,7 @@ const SimpleTabs = () => {
               <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/product')}}>
               <Tab label="المنتجات" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
               </Button>
-              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/activity')}}>
+              <Button variant="contained" color="default" style={style2} onClick={e =>{navigate('/news')}}>
               <Tab label="الأخبار" style={{ color: 'black', fontSize: '20px', textDecoration: 'none', }} />
               </Button>
           </>
